@@ -1,0 +1,46 @@
+{
+  "name": "rmd-ref-app-ui",
+  "version": "1.0.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests",
+    "target",
+    "test-target",
+    "sass"
+  ],
+  "dependencies": {
+    "requirejs": "https://github.com/jrburke/requirejs.git#2.1.18",
+    "jquery": "2.1.3",
+    "require-css": "0.1.1",
+    "requirejs-plugins": "1.0.2",
+    "angular": "~1.3.16",
+    "angular-route": "~1.3.16",
+    "angular-resource": "~1.3.16",
+    "angular-mocks": "~1.3.16",
+    "angular-ui-router": "0.2.13",
+    "lodash": "2.4.1",
+    "es6-promise": "https://github.com/jakearchibald/es6-promise.git#2.3.0",
+    "polymer": "~v1.0.4",
+    "px-datasource": "https://github.com/predixdev/px-datasource.git#v1.1",
+    "px-context-browser": "https://github.com/predixdev/px-context-browser.git#~v0.4.9",
+    "px-app-nav": "https://github.com/predixdev/px-app-nav.git#~v0.4.0",
+    "px-theme": "https://github.com/predixdev/px-theme.git#~v0.3.15",
+    "px-card": "https://github.com/predixdev/px-card.git#v0.0.18",
+    "px": "https://github.com/predixdev/px.git#v1.0.5",
+    "px-login": "https://github.com/predixdev/px-login.git#~v0.0.1",
+    "rmd-ref-app-cards": "https://github.com/predixdev/rmd-ref-app-cards.git",
+    "marked-element": "PolymerElements/marked-element#~1.1.1"
+  },
+  "resolutions": {
+    "polymer": "~v1.1.5",
+    "px-typography-design": "~0.3.1",
+    "px-theme": "~v0.3.15",
+    "px-card": "v0.0.18",
+    "px": "v1.0.5"
+  }
+}

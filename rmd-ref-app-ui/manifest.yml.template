@@ -1,0 +1,21 @@
+---
+applications:
+  - name: rmd-ref-app-dev
+    buildpack: predix_openresty_buildpack
+    path: dist
+    memory: 64M
+    stack: cflinuxfs2
+    services:
+            - ${sessionService}
+            - ${assetService}
+            - ${timeSeriesService}
+            - ${uaaService}
+    env:
+      UAA_SERVER_URL: ${UAA_SERVER_URL}
+      assetUrl: ${ASSET_URL}
+      assetZoneId: ${ASSET_ZONE}
+      timeSeriesUrl: ${TS_URL}
+      timeSeriesZoneId: ${TS_ZONE}
+      predix_oauthClientId : ${ENCODED_CLIENTID}
+      RMD_DATASOURCE_URL: ${RMD_DATASOURCE_URL}
+      LIVE_DATA_WS_URL: ${LIVE_DATA_WS_URL}

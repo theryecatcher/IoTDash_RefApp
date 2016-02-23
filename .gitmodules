@@ -1,0 +1,60 @@
+[submodule "predix-rest-client"]
+	path = predix-rest-client
+	url = https://github.com/predixdev/predix-rest-client.git
+	branch = master
+[submodule "ext-interface"]
+	path = ext-interface
+	url = https://github.com/predixdev/ext-interface.git
+	branch = master
+[submodule "asset-bootstrap"]
+	path = asset-bootstrap
+	url = https://github.com/predixdev/asset-bootstrap.git
+	branch = master
+[submodule "timeseries-bootstrap"]
+	path = timeseries-bootstrap
+	url = https://github.com/predixdev/timeseries-bootstrap.git
+	branch = master
+[submodule "data-seed-service"]
+	path = data-seed-service
+	url = https://github.com/predixdev/data-seed-service.git
+	branch = master
+[submodule "dataingestion-service"]
+	path = dataingestion-service
+	url = https://github.com/predixdev/dataingestion-service.git
+	branch = master
+[submodule "machinedata-simulator"]
+	path = machinedata-simulator
+	url = https://github.com/predixdev/machinedata-simulator.git
+	branch = master
+[submodule "rmd-datasource"]
+	path = rmd-datasource
+	url = https://github.com/predixdev/rmd-datasource.git
+	branch = master
+[submodule "fdh-router-service"]
+	path = fdh-router-service
+	url = https://github.com/predixdev/fdh-router-service.git
+	branch = master
+[submodule "rmd-analytics"]
+	path = rmd-analytics
+	url = https://github.com/predixdev/rmd-analytics.git
+	branch = master
+[submodule "rmd-orchestration"]
+	path = rmd-orchestration
+	url = https://github.com/predixdev/rmd-orchestration.git
+	branch = master
+[submodule "rmd-ref-app-ui"]
+	path = rmd-ref-app-ui
+	url = https://github.com/predixdev/rmd-ref-app-ui.git
+	branch = master
+[submodule "predix-websocket-server"]
+	path = predix-websocket-server
+	url = https://github.com/predixdev/predix-websocket-server.git
+	branch = master
+[submodule "predix-microservice-cf-jsr311"]
+	path = predix-microservice-cf-jsr311
+	url = https://github.com/predixdev/predix-microservice-cf-jsr311.git
+	branch = master
+[submodule "predix-microservice-cf-spring"]
+	path = predix-microservice-cf-spring
+	url = https://github.com/predixdev/predix-microservice-cf-spring.git
+	branch = master

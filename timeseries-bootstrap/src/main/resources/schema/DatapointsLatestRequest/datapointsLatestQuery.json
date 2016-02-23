@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "tags": {
+      "id": "http://jsonschema.net/tags",
+      "type": "array",
+      "items": {
+        "id": "http://jsonschema.net/tags/0",
+        "type": "object",
+        "properties": {
+          "name": {
+            "id": "http://jsonschema.net/tags/0/name",
+            "type": "string"
+          },
+          "filters": {
+            "id": "http://jsonschema.net/tags/0/filters",
+            "type": "object",
+            "properties": {
+              "attributes": {
+                "id": "http://jsonschema.net/tags/0/filters/attributes",
+                "type": "array",
+                "items": {
+                  "id": "http://jsonschema.net/tags/0/filters/attributes/0",
+                  "type": "object",
+                  "properties": {
+                    "host": {
+                      "id": "http://jsonschema.net/tags/0/filters/attributes/0/host",
+                      "type": "array",
+                      "items": {
+                        "id": "http://jsonschema.net/tags/0/filters/attributes/0/host/0",
+                        "type": "string"
+                      },
+                      "additionalItems": false
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "additionalItems": false
+              },
+              "measurements": {
+                "id": "http://jsonschema.net/tags/0/filters/measurements",
+                "type": "object",
+                "properties": {
+                  "condition": {
+                    "id": "http://jsonschema.net/tags/0/filters/measurements/condition",
+                    "type": "string"
+                  },
+                  "values": {
+                    "id": "http://jsonschema.net/tags/0/filters/measurements/values",
+                    "type": "array",
+                    "items": {
+                      "id": "http://jsonschema.net/tags/0/filters/measurements/values/0",
+                      "type": "integer"
+                    },
+                    "additionalItems": false
+                  }
+                },
+                "additionalProperties": false
+              },
+              "qualities": {
+                "id": "http://jsonschema.net/tags/0/filters/qualities",
+                "type": "object",
+                "properties": {
+                  "values": {
+                    "id": "http://jsonschema.net/tags/0/filters/qualities/values",
+                    "type": "array",
+                    "items": {
+                      "id": "http://jsonschema.net/tags/0/filters/qualities/values/0",
+                      "type": "integer"
+                    },
+                    "additionalItems": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "additionalItems": false
+    }
+  },
+  "additionalProperties": false
+}

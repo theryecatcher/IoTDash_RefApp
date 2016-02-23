@@ -1,0 +1,60 @@
+[submodule "predix-rest-client"]
+	path = predix-rest-client
+	url = https://github.build.ge.com/adoption/predix-rest-client.git
+	branch = develop
+[submodule "ext-interface"]
+	path = ext-interface
+	url = https://github.build.ge.com/adoption/ext-interface.git
+	branch = develop
+[submodule "asset-bootstrap"]
+	path = asset-bootstrap
+	url = https://github.build.ge.com/adoption/asset-bootstrap.git
+	branch = develop
+[submodule "timeseries-bootstrap"]
+	path = timeseries-bootstrap
+	url = https://github.build.ge.com/adoption/timeseries-bootstrap.git
+	branch = develop
+[submodule "data-seed-service"]
+	path = data-seed-service
+	url = https://github.build.ge.com/adoption/data-seed-service.git
+	branch = develop
+[submodule "dataingestion-service"]
+	path = dataingestion-service
+	url = https://github.build.ge.com/adoption/dataingestion-service.git
+	branch = develop
+[submodule "machinedata-simulator"]
+	path = machinedata-simulator
+	url = https://github.build.ge.com/adoption/machinedata-simulator.git
+	branch = develop
+[submodule "rmd-datasource"]
+	path = rmd-datasource
+	url = https://github.build.ge.com/adoption/rmd-datasource.git
+	branch = develop
+[submodule "fdh-router-service"]
+	path = fdh-router-service
+	url = https://github.build.ge.com/adoption/fdh-router-service.git
+	branch = develop
+[submodule "rmd-analytics"]
+	path = rmd-analytics
+	url = https://github.build.ge.com/adoption/rmd-analytics.git
+	branch = develop
+[submodule "rmd-orchestration"]
+	path = rmd-orchestration
+	url = https://github.build.ge.com/adoption/rmd-orchestration.git
+	branch = develop
+[submodule "rmd-ref-app-ui"]
+	path = rmd-ref-app-ui
+	url = https://github.build.ge.com/adoption/rmd-ref-app-ui.git
+	branch = develop
+[submodule "predix-websocket-server"]
+	path = predix-websocket-server
+	url = https://github.build.ge.com/adoption/predix-websocket-server.git
+	branch = develop
+[submodule "predix-microservice-cf-jsr311"]
+	path = predix-microservice-cf-jsr311
+	url = https://github.build.ge.com/adoption/predix-microservice-cf-jsr311.git
+	branch = develop
+[submodule "predix-microservice-cf-spring"]
+	path = predix-microservice-cf-spring
+	url = https://github.build.ge.com/adoption/predix-microservice-cf-spring.git
+	branch = develop

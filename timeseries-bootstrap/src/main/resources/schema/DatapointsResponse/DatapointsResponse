@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "tags": {
+      "id": "http://jsonschema.net/tags",
+      "type": "array",
+      "items": {
+        "id": "http://jsonschema.net/tags/0",
+        "type": "object",
+        "properties": {
+          "name": {
+            "id": "http://jsonschema.net/tags/0/name",
+            "type": "string"
+          },
+          "results": {
+            "id": "http://jsonschema.net/tags/0/results",
+            "type": "array",
+            "items": {
+              "id": "http://jsonschema.net/tags/0/results/0",
+              "type": "object",
+              "properties": {
+                "groups": {
+                  "id": "http://jsonschema.net/tags/0/results/0/groups",
+                  "type": "array",
+                  "items": {
+                    "id": "http://jsonschema.net/tags/0/results/0/groups/0",
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "id": "http://jsonschema.net/tags/0/results/0/groups/0/name",
+                        "type": "string"
+                      },
+                      "type": {
+                        "id": "http://jsonschema.net/tags/0/results/0/groups/0/type",
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "attributes": {
+                  "id": "http://jsonschema.net/tags/0/results/0/attributes",
+                  "type": "object",
+                  "properties": {}
+                },
+                "values": {
+                  "id": "http://jsonschema.net/tags/0/results/0/values",
+                  "type": "array",
+                  "items": {
+                    "id": "http://jsonschema.net/tags/0/results/0/values/0",
+                    "type": "array",
+                    "items": [
+                      {
+                        "id": "http://jsonschema.net/tags/0/results/0/values/0/0",
+                        "type": "integer"
+                      },
+                      {
+                        "id": "http://jsonschema.net/tags/0/results/0/values/0/1",
+                        "type": "number"
+                      },
+                      {
+                        "id": "http://jsonschema.net/tags/0/results/0/values/0/2",
+                        "type": "integer"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "stats": {
+            "id": "http://jsonschema.net/tags/0/stats",
+            "type": "object",
+            "properties": {
+              "rawCount": {
+                "id": "http://jsonschema.net/tags/0/stats/rawCount",
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

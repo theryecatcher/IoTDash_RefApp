@@ -1,0 +1,23 @@
+#git clone https://github.com/PredixDev/predix-rmd-ref-app.git 
+#cd predix-rmd-ref-app
+git status
+git submodule add https://github.com/predixdev/asset-bootstrap.git
+git submodule add https://github.com/predixdev/ext-interface.git
+git submodule add https://github.com/predixdev/timeseries-bootstrap.git
+git submodule add https://github.com/PredixDev/predix-microservice-cf-jsr311
+git submodule add https://github.com/PredixDev/predix-microservice-cf-spring
+git submodule add https://github.com/predixdev/predix-rest-client.git
+
+git submodule add https://github.com/predixdev/data-seed-service.git
+git submodule add https://github.com/predixdev/dataingestion-service.git
+git submodule add https://github.com/predixdev/machinedata-simulator.git
+git submodule add https://github.com/predixdev/rmd-datasource.git
+git submodule add https://github.com/predixdev/fdh-router-service.git
+git submodule add https://github.com/predixdev/rmd-analytics.git
+git submodule add https://github.com/predixdev/rmd-orchestration.git
+git submodule add https://github.com/predixdev/rmd-ref-app-ui.git
+git submodule add https://github.com/predixdev/predix-websocket-server.git
+git status
+git commit -m "put back submodules"
+git status
+git push

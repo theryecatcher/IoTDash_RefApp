@@ -1,0 +1,25 @@
+---
+applications:
+  - name: dev-predix-dataseed
+    buildpack: java_buildpack
+    path: target/data-seed-service-1.3.0.jar
+    timeout: 120
+    services:
+      - ${assetService}
+      - ${uaaService}
+      - ${acsService}
+
+env:
+    predix_asset_name : ${assetService}
+    SPRING_PROFILES_ACTIVE : cloud,clouddev
+    predix_userName : rmd_user_1
+    predix_password : rmd_user_1
+    predix_oauthRestHost : ${oauthRestHost}
+    predix_oauthRestPort : 80
+    predix_oauthClientId : ${clientId}:${secret}
+    trustedIssuerIdsRegexPattern : ^http://(.*\\.)?${oauthRestHost}/oauth/token$
+    accessTokenEndpointUrl : https://${oauthRestHost}/oauth/token
+    clientId : ${clientId}
+    clientSecret: ${secret}
+    acsUri : ${acsURI}
+    acsSubZone : ${acssubdomain}

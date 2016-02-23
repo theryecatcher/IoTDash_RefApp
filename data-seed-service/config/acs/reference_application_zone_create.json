@@ -1,0 +1,11 @@
+{
+    "name": "refapp-acs-zone",
+    "subdomain": "rmd_refapp-subdomain",
+    "description": "ACS zone for RMD reference application",
+    "issuers": [
+        {
+            "issuerId": "http://stc.predix-uaa-test.grc-apps.svc.ice.ge.com/oauth/token",
+            "issuerCheckTokenUrl": "https://stc.predix-uaa-test.grc-apps.svc.ice.ge.com/check_token"
+        }
+    ]
+}

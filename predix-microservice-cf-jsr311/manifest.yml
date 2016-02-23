@@ -1,0 +1,5 @@
+---
+applications:
+  - name: predix-boot-cf-jsr
+    buildpack: java_buildpack
+    path: target/predix-microservice-cf-jsr311-1.1.4.jar

@@ -1,0 +1,1 @@
+java -jar -Dspring.profiles.active=cloud target/fieldchangedevent-consumer-1.0.1-SNAPSHOT.jar --port=5672 --server=localhost --mainq=fieldchangedeventMainQ --errorq=fieldchangedeventErrorQ --predix_oauthRestHost=35492c1e-657c-4377-ac51-add963552460.predix-uaa-sysint.grc-apps.svc.ice.ge.com --predix_oauthClientId=rmd-unittest:secret

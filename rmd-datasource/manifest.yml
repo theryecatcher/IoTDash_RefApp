@@ -1,0 +1,20 @@
+#inherit: base-manifest.yml
+applications:
+  - name: dev-rmd-datasource
+    buildpack: java_buildpack
+    path: target/rmd-datasource-1.2.0-SNAPSHOT.jar
+    memory: 2GB
+    services:
+      - predixAsset
+      - newRelic
+      - predixTimeseries      
+
+env:
+    SPRING_PROFILES_ACTIVE : cloud,clouddev 
+    predix_oauthRestHost : stc.predix-uaa-test.grc-apps.svc.ice.ge.com
+    predix_oauthRestPort : 9093
+    predix_oauthClientId : rmd_ref_app_dev:rmddev@a
+    trustedIssuerIdsRegexPattern : ^http://(.*\\.)?stc.predix-uaa-test.grc-apps.svc.ice.ge.com/oauth/token$
+    predix_connectionTimeout : 5000
+    predix_socketTimeout : 5000
+

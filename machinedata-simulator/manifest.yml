@@ -1,0 +1,9 @@
+---
+applications:
+  - name: dev-machinedata-simulator
+    buildpack: java_buildpack
+    path: target/machinedata-simulator-1.1.0-SNAPSHOT.jar
+    timeout: 120
+env:
+    machineControllerId: 2
+    predix_dataingestion_service_uri: http://dev-dataingestion-service.grc-apps.svc.ice.ge.com

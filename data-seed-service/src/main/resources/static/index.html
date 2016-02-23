@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<form action="login" method="post" enctype="multipart/form-data">
+		<table>
+			<tbody>
+				<tr>
+					<td>Import data in to Predix to set up the Predix Reference App .
+						Enter the admin username and password</td>
+				</tr>
+				<tr>
+				<td>UserName :  <input name="username" type="text"/></td>
+				</tr>
+				<tr>
+				<td>Password : <input name="password" type="password"/></td>
+				</tr>
+				<tr>
+					<td><b>Log in to <a target=_blank href="http://github.com/PredixDev">github</a>. Download <a href="https://github.com/PredixDev/data-seed-service/raw/master/dataseed-service/src/main/resources/rmdapp/AssetData.xls">AssetData.xls</a> </b></td>
+				</tr>
+				<tr>
+				<td><b>Browse to the Downloads folder and select AssetData.xls.</b></td>
+				</tr>				
+				<tr>
+				<td><input name="file" type="file" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button type="submit">Submit</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</body>
+</html>

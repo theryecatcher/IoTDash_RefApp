@@ -1,0 +1,8 @@
+<settingsSecurity>
+  <!-- use relocation for secure situations.  Move the Master password to a file on a mapped volume -->
+  <!--<relocation>/Volumes/usb-key/settings-security.xml</relocation>-->
+  <master>{kBAwDwiqeh4HOkw9/0TUiA747Ibs8YlJFJ8Jj/LnQAY=}</master>
+</settingsSecurity>
+
+
+

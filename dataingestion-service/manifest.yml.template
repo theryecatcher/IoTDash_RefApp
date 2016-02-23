@@ -1,0 +1,23 @@
+---
+applications:
+  - name: integration-predix-dataingestion
+    buildpack: java_buildpack
+    path: target/dataingestion-service-1.2.0.jar
+    services:
+      - ${assetService}
+      - ${timeSeriesService}
+      - ${uaaService}  
+env:
+    SPRING_PROFILES_ACTIVE : cloud,clouddev
+    predix_asset_name: ${assetService}
+    predix_timeseries_name: ${timeSeriesService}
+    predix_oauthRestHost: ${oauthRestHost}
+    predix_oauthClientId: ${clientId}:${secret}
+    trustedIssuerIdsRegexPattern: ^https://(.*\\.)?${oauthRestHost}/oauth/token$
+    accessTokenEndpointUrl : https://${oauthRestHost}/oauth/token
+    clientId : ${clientId}
+    clientSecret: ${secret}
+    acsUri : https://acs-staging.grc-apps.svc.ice.ge.com
+    acsSubZone : rmdsubdomain
+    predixWebSocketURI: wss://${WEB_SOCKET_HOST}/livestream/messages
+

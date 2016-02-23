@@ -1,0 +1,10 @@
+---
+applications:
+  - name: integration-predix-machinedata-simulator
+    buildpack: java_buildpack
+    path: target/machinedata-simulator-1.1.0.jar
+    timeout: 120
+env:
+    machineControllerId: 1
+    predix_dataingestion_service_uri: ${dataIngestionUrl}
+    

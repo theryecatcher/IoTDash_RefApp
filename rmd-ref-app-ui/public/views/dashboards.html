@@ -1,0 +1,30 @@
+<px-context-browser
+    initial-contexts='{{initialContexts}}'
+    handlers="ngScope:handlers"
+    opened-item-name="Select Context">
+</px-context-browser>
+
+<px-dashboard selected-deck="{{selectedDeck}}" context="{{context}}"></px-dashboard>
+
+<px-card
+  id="dashboard-description-card"
+  header-text="Plant Monitoring and Diagnostics">
+
+        <p>Click 'Select Context' above, then drill down to find equipment and view data.</p>
+
+  <div class="layout">
+    <div class="layout__item u-3/4">
+      <b>Note:</b> Before clicking on the Github button, you need to be invited to the Predix Beta program. After you've been invited, you can sign in to Github.com and join the "PredixDev" Github organization.  Then you can access the source code by clicking the Github button on this page.
+    </div>
+    <div class="layout__item u-1/4">
+      <a target="_blank" class="btn btn-large" href="https://github.com/predixdev/predix-rmd-ref-app#predix-rmd-reference-app">
+        <i class="fa fa-github"></i>
+        Github Repo
+      </a>
+    </div>
+  </div>
+  <br/>
+  <div style="text-align: center;">
+    <img src="images/good2-turbine.png" alt="good turbine"  width="350px">
+  </div>
+</description-card>
