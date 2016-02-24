@@ -30,6 +30,7 @@ import com.ge.predix.solsvc.bootstrap.tsb.factories.TimeseriesFactory;
 import com.ge.predix.solsvc.dataingestion.api.Constants;
 import com.ge.predix.solsvc.dataingestion.service.type.JSONData;
 import com.ge.predix.solsvc.dataingestion.service.type.SensorDetails;
+import com.ge.predix.solsvc.dataingestion.websocket.WSClientEndpointConfig;
 import com.ge.predix.solsvc.dataingestion.websocket.WebSocketClient;
 import com.ge.predix.solsvc.dataingestion.websocket.WebSocketConfig;
 
@@ -72,7 +73,7 @@ public class TimeSeriesDataIngestionHandler extends BaseFactoryIT
     {
         log.debug(data);
         if (StringUtils.isEmpty(authorization)) {
-        	//log.info("reading credentials from "+restConfig.getOauthClientId());
+        	log.info("reading credentials from "+restConfig.getOauthClientId());
         	String[] oauthClient  = restConfig.getOauthClientId().split(":");
         	authorization = "Bearer "+getRestTemplate(oauthClient[0],oauthClient[1]).getAccessToken().getValue();
         }
@@ -156,6 +157,9 @@ public class TimeSeriesDataIngestionHandler extends BaseFactoryIT
                 this.timeSeriesFactory.create(builder);
                 
                 log.info("Added Data to Timeseries");
+                
+                WSClientEndpointConfig.SetAuthorizationAndZone(authorization, tenentId);
+                                
                 wsClient.postToWebSocketServer(builder.build());
                 log.info("Posted Data to Predix Websocket Server");
             }                                    

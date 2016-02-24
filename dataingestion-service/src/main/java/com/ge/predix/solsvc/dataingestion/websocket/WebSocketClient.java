@@ -27,7 +27,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class WebSocketClient
 {
-	 private static Logger              log = Logger.getLogger(WebSocketClient.class);
+	private static Logger              log = Logger.getLogger(WebSocketClient.class);
     WebSocketContainer container = ContainerProvider.getWebSocketContainer();
     
     @Autowired

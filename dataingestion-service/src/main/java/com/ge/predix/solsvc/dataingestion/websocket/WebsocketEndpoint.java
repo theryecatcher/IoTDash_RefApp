@@ -16,16 +16,20 @@ import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
-@ClientEndpoint
+@ClientEndpoint(configurator=WSClientEndpointConfig.class)
 public class WebsocketEndpoint
 {
-
+	private static Logger logger = LoggerFactory.getLogger(WebsocketEndpoint.class);
+	
     @OnOpen
     public void onOpen(Session session, EndpointConfig config)
     {
+    	logger.info("OnOpen");
         /*try
         {
             session.getBasicRemote().sendText((String) config.getUserProperties().get("payload")); //$NON-NLS-1$
@@ -40,7 +44,7 @@ public class WebsocketEndpoint
     @OnMessage
     public void onMessage(String data)
     {
-        
+    	logger.info("onMessage:" + data);
     }
 
 }
