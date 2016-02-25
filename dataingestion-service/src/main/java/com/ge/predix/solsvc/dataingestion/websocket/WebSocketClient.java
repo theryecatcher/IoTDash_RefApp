@@ -41,8 +41,6 @@ public class WebSocketClient
     public Response postToWebSocketServer(String data)
     {
     	log.info(data);
-    	data = "{\"messageId\":1456399996113,\"body\":[{\"name\":\"Temperature\",\"datapoints\":[[1456220247000,25,3],[1456381617000,63,3]],\"attributes\":{\"sourceTagName\":\"Temperature\",\"MinValue\":\"23\",\"sourceTagID\":\"12352\",\"MaxValue\":\"465\"}}]}";
-    	log.info(data);
     	final Response statusResponse = new Response();
     	
         try
