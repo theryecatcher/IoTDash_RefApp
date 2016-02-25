@@ -91,10 +91,10 @@ public class TimeSeriesDataIngestionHandler extends BaseFactoryIT
             for (SensorDetails details : list)
             {
             	// Long i=new Long(System.currentTimeMillis());
-            	String filter = "";
-            	String value = "";
+            	// String filter = "";
+            	// String value = "";
             	// String nodeName=json.getName();
-            	Asset asset = this.assetDataHandler.retrieveAsset(null, filter, value, authorization);
+            	// Asset asset = this.assetDataHandler.retrieveAsset(null, filter, value, authorization);
             	/*if ( asset != null )
                 {
             		LinkedHashMap<String, AssetMeter> meters = asset.getAssetMeter();
@@ -136,18 +136,26 @@ public class TimeSeriesDataIngestionHandler extends BaseFactoryIT
                 	log.warn("4. asset not found, unable to find filter=" + filter + " = " + value + " nodeName="
                             + nodeName + " authorization=" + authorization);
                 }*/
+            	WSClientEndpointConfig.SetAuthorizationAndZone(authorization, tenentId);
+            	
                 InjectionMetricBuilder builder = InjectionMetricBuilder.getInstance();
                 InjectionMetric metric = new InjectionMetric(new Long(System.currentTimeMillis()));
                 InjectionBody body = new InjectionBody(details.sensorName);
                 
+                /*log.info(details.sensorName);
+                log.info(details.SensorID);
+                log.info(details.MaxValue);
+                log.info(details.MinValue);*/
                 body.addAttributes("sourceTagName",details.sensorName);
-                body.addAttributes("sourceTagID",""+(Integer.parseInt(details.SensorID)));
-                body.addAttributes("MaxValue",""+(Float.parseFloat(details.MaxValue)));
-                body.addAttributes("MinValue",""+(Float.parseFloat(details.MinValue)));
+                body.addAttributes("sourceTagID",details.SensorID);
+                body.addAttributes("MaxValue",details.MaxValue);
+                body.addAttributes("MinValue",details.MinValue);
                 
                 int count = details.SensorReadings.size();
                 for (int i = 0 ; i <count; i++)
                 {
+                	// log.info(details.SensorReadings.get(i).epoch);
+                	// log.info(details.SensorReadings.get(i).value);
                     body.addDataPoint(Long.parseLong(details.SensorReadings.get(i).epoch),Long.parseLong(details.SensorReadings.get(i).value));
                 }
                 
