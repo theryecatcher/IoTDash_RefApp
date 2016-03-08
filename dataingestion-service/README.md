@@ -46,3 +46,23 @@ Timeseries Tag ID
 ### More Details
 * [More GE resources](https://github.com/PredixDev/predix-rmd-ref-app/blob/master/docs/resources.md)
 * [RMD Reference App](http://github.com/predixdev/predix-rmd-ref-app)
+
+### Modified for personal use --Anoop
+- Changed the logic in the Handler to bypass the Asset Service.
+- Added files to include the headers for Data Ingestion Websocket Push request.
+
+### For configuration and upload follow the following steps
+- In ~/.m2/settings.xml update the username and password (predix.io) to access the Predix Artifactory.
+- Do a git clone of the whole REF APP.
+- check dependency requirements for Timeseries-Bootstrap, Asset-Bootstrap, Predix-Rest Client & Data Ingestion project packages (pom.xml).
+- Update application properties in timeseries-bootstrap, data ingetsion & asset-boostrap codes to suit your environment.
+- Navigate to the Data-Ingestion folder and run mvn package, it creates a .jar file in the target foldre in the same location.
+- Update manifest.yml (in Data Ingestion) to suit your environment (UAA, Asset & Views Service) setup.
+- Do a cf push with relevant poroperties in the manifest yaml file.
+
+### To check the service
+- Use any REST Client and use the URL generated when you pushed the App.
+- Give the Timeseries data input in the format 
+-   URL/clientId=<clientId>&tenantId=<TSS-instance-id>&content=[{"sensorName":"Humidity","SensorID":"FGD1235","MaxValue":"465","MinValue":"23","SensorReadings":[{"epoch":"1456220247000","value":"4"},{"epoch":"1456381617000","value":"6"}]}]
+- Above is an example any number of sensors and any number of timestamped values can be uploaded.
+- Do a quesy to check if the data is uploaded.
