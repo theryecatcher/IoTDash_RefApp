@@ -1,6 +1,6 @@
 ---
 applications:
-  - name: infy-dataingestion-service
+  - name: infy-iot-di-service
     buildpack: java_buildpack
     path: target/dataingestion-service-1.2.0.jar
     services:

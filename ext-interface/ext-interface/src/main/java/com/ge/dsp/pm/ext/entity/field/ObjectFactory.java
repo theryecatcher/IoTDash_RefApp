@@ -39,22 +39,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SearchType }
-     * 
-     */
-    public SearchType createSearchType() {
-        return new SearchType();
-    }
-
-    /**
-     * Create an instance of {@link FieldTypeList }
-     * 
-     */
-    public FieldTypeList createFieldTypeList() {
-        return new FieldTypeList();
-    }
-
-    /**
      * Create an instance of {@link FieldList }
      * 
      */
@@ -71,11 +55,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link FieldTypeList }
+     * 
+     */
+    public FieldTypeList createFieldTypeList() {
+        return new FieldTypeList();
+    }
+
+    /**
      * Create an instance of {@link Field }
      * 
      */
     public Field createField() {
         return new Field();
+    }
+
+    /**
+     * Create an instance of {@link SearchType }
+     * 
+     */
+    public SearchType createSearchType() {
+        return new SearchType();
     }
 
     /**

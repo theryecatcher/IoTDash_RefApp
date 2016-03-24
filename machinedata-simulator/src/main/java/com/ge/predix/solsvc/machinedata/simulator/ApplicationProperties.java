@@ -29,6 +29,10 @@ public class ApplicationProperties
     private String machineControllerId;
     private String predixDataIngestionURL;
     private String envTenantId;
+    private String oAuthUrl;
+    private String grantType;
+    private String userName;
+    private String password;
 
     /**
      * @return -
@@ -145,8 +149,24 @@ public class ApplicationProperties
     {
         this.tenantId = tenantId;
     }
+    
+    public String getGrantType() {
+		return grantType;
+	}
 
-    @SuppressWarnings("nls")
+	public String getUserName() {
+		return userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+	
+	public String getoAuthUrl() {
+		return oAuthUrl;
+	}
+
+	@SuppressWarnings("nls")
     @Override
     public void setEnvironment(Environment env)
     {
@@ -157,6 +177,10 @@ public class ApplicationProperties
         }
         this.predixDataIngestionURL = env.getProperty("predix_dataingestion_service_uri");
         this.envTenantId = env.getProperty("predix_tenantId");
+        this.grantType = env.getProperty("predix_grantType");
+        this.oAuthUrl = env.getProperty("predix_oAuthUrl");
+        this.userName = env.getProperty("predix_userName");
+        this.password = env.getProperty("predix_password");        
     }
 
     /**

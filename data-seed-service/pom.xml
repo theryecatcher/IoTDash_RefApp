@@ -120,7 +120,7 @@
 		<dependency>
 			<artifactId>logback-classic</artifactId>
 			<groupId>ch.qos.logback</groupId>
-			<version>${logback.version}</version>
+			<version>${logback.version}</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>

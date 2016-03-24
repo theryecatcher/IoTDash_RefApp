@@ -35,19 +35,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FieldIdentifierList }
-     * 
-     */
-    public FieldIdentifierList createFieldIdentifierList() {
-        return new FieldIdentifierList();
-    }
-
-    /**
      * Create an instance of {@link FieldIdentifier }
      * 
      */
     public FieldIdentifier createFieldIdentifier() {
         return new FieldIdentifier();
+    }
+
+    /**
+     * Create an instance of {@link FieldIdentifierList }
+     * 
+     */
+    public FieldIdentifierList createFieldIdentifierList() {
+        return new FieldIdentifierList();
     }
 
     /**

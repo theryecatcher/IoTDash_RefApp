@@ -36,6 +36,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SourceType }
+     * 
+     */
+    public SourceType createSourceType() {
+        return new SourceType();
+    }
+
+    /**
      * Create an instance of {@link Source }
      * 
      */
@@ -49,14 +57,6 @@ public class ObjectFactory {
      */
     public SourceTypeList createSourceTypeList() {
         return new SourceTypeList();
-    }
-
-    /**
-     * Create an instance of {@link SourceType }
-     * 
-     */
-    public SourceType createSourceType() {
-        return new SourceType();
     }
 
     /**

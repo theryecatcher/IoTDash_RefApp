@@ -35,19 +35,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PortList }
-     * 
-     */
-    public PortList createPortList() {
-        return new PortList();
-    }
-
-    /**
      * Create an instance of {@link Port }
      * 
      */
     public Port createPort() {
         return new Port();
+    }
+
+    /**
+     * Create an instance of {@link PortList }
+     * 
+     */
+    public PortList createPortList() {
+        return new PortList();
     }
 
     /**

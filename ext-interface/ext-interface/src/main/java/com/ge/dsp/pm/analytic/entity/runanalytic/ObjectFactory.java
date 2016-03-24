@@ -30,19 +30,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RunAnalyticRequest }
-     * 
-     */
-    public RunAnalyticRequest createRunAnalyticRequest() {
-        return new RunAnalyticRequest();
-    }
-
-    /**
      * Create an instance of {@link RunAnalyticResult }
      * 
      */
     public RunAnalyticResult createRunAnalyticResult() {
         return new RunAnalyticResult();
+    }
+
+    /**
+     * Create an instance of {@link RunAnalyticRequest }
+     * 
+     */
+    public RunAnalyticRequest createRunAnalyticRequest() {
+        return new RunAnalyticRequest();
     }
 
 }

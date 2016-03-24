@@ -44,19 +44,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FieldIdentifierValue }
-     * 
-     */
-    public FieldIdentifierValue createFieldIdentifierValue() {
-        return new FieldIdentifierValue();
-    }
-
-    /**
      * Create an instance of {@link FieldIdentifierObject }
      * 
      */
     public FieldIdentifierObject createFieldIdentifierObject() {
         return new FieldIdentifierObject();
+    }
+
+    /**
+     * Create an instance of {@link FieldIdentifierValue }
+     * 
+     */
+    public FieldIdentifierValue createFieldIdentifierValue() {
+        return new FieldIdentifierValue();
     }
 
     /**

@@ -30,11 +30,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PutFieldDataResult }
+     * Create an instance of {@link PutFieldDataRequest }
      * 
      */
-    public PutFieldDataResult createPutFieldDataResult() {
-        return new PutFieldDataResult();
+    public PutFieldDataRequest createPutFieldDataRequest() {
+        return new PutFieldDataRequest();
     }
 
     /**
@@ -46,11 +46,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PutFieldDataRequest }
+     * Create an instance of {@link PutFieldDataResult }
      * 
      */
-    public PutFieldDataRequest createPutFieldDataRequest() {
-        return new PutFieldDataRequest();
+    public PutFieldDataResult createPutFieldDataResult() {
+        return new PutFieldDataResult();
     }
 
 }

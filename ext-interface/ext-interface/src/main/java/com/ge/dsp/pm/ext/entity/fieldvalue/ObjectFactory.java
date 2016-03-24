@@ -35,19 +35,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FieldValueList }
-     * 
-     */
-    public FieldValueList createFieldValueList() {
-        return new FieldValueList();
-    }
-
-    /**
      * Create an instance of {@link FieldValue }
      * 
      */
     public FieldValue createFieldValue() {
         return new FieldValue();
+    }
+
+    /**
+     * Create an instance of {@link FieldValueList }
+     * 
+     */
+    public FieldValueList createFieldValueList() {
+        return new FieldValueList();
     }
 
     /**

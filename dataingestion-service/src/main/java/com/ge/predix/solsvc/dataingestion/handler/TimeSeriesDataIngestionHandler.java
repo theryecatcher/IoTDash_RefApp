@@ -156,7 +156,7 @@ public class TimeSeriesDataIngestionHandler extends BaseFactoryIT
                 {
                 	// log.info(details.SensorReadings.get(i).epoch);
                 	// log.info(details.SensorReadings.get(i).value);
-                    body.addDataPoint(Long.parseLong(details.SensorReadings.get(i).epoch),Long.parseLong(details.SensorReadings.get(i).value));
+                    body.addDataPoint(Long.parseLong(details.SensorReadings.get(i).epoch),Double.parseDouble(details.SensorReadings.get(i).value));
                 }
                 
                 metric.getBody().add(body);

@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: com.ge.predix.solsvc.fdh-custom-handler
+Bundle-Version: 1.5.0
+Bundle-Name: fdh-custom-handler
+Bundle-ManifestVersion: 2
+Private-Package: !*
+Created-By: Apache Maven Bundle Plugin
+Tool: Bnd-1.43.0
+

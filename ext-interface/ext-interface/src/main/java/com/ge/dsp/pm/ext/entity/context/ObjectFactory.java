@@ -36,11 +36,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ServiceIdentifier }
+     * Create an instance of {@link OrchestrationContext }
      * 
      */
-    public ServiceIdentifier createServiceIdentifier() {
-        return new ServiceIdentifier();
+    public OrchestrationContext createOrchestrationContext() {
+        return new OrchestrationContext();
     }
 
     /**
@@ -60,11 +60,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link OrchestrationContext }
+     * Create an instance of {@link ServiceIdentifier }
      * 
      */
-    public OrchestrationContext createOrchestrationContext() {
-        return new OrchestrationContext();
+    public ServiceIdentifier createServiceIdentifier() {
+        return new ServiceIdentifier();
     }
 
     /**

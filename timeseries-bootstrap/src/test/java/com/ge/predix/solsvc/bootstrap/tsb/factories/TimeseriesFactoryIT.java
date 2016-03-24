@@ -78,10 +78,10 @@ public class TimeseriesFactoryIT extends BaseFactoryIT {
 		} catch (InterruptedException ex) {
 			Thread.currentThread().interrupt();
 		}
-		queryForDatapoints(headers);
-		queryForDatapointsWithMilliSecsAsStartTime(headers);
-		queryForDatapointsAndOrder(headers);
-		queryForLatestDatapoints(headers);
+//		queryForDatapoints(headers);
+//		queryForDatapointsWithMilliSecsAsStartTime(headers);
+//		queryForDatapointsAndOrder(headers);
+//		queryForLatestDatapoints(headers);
 	}
 	
 	

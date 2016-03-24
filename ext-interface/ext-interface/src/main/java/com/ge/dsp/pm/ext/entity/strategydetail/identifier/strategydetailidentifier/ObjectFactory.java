@@ -35,19 +35,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StrategyDetailIdentifierList }
-     * 
-     */
-    public StrategyDetailIdentifierList createStrategyDetailIdentifierList() {
-        return new StrategyDetailIdentifierList();
-    }
-
-    /**
      * Create an instance of {@link StrategyDetailIdentifier }
      * 
      */
     public StrategyDetailIdentifier createStrategyDetailIdentifier() {
         return new StrategyDetailIdentifier();
+    }
+
+    /**
+     * Create an instance of {@link StrategyDetailIdentifierList }
+     * 
+     */
+    public StrategyDetailIdentifierList createStrategyDetailIdentifierList() {
+        return new StrategyDetailIdentifierList();
     }
 
     /**

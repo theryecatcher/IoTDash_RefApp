@@ -53,19 +53,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StrategyTypeList }
-     * 
-     */
-    public StrategyTypeList createStrategyTypeList() {
-        return new StrategyTypeList();
-    }
-
-    /**
      * Create an instance of {@link StrategyType }
      * 
      */
     public StrategyType createStrategyType() {
         return new StrategyType();
+    }
+
+    /**
+     * Create an instance of {@link StrategyTypeList }
+     * 
+     */
+    public StrategyTypeList createStrategyTypeList() {
+        return new StrategyTypeList();
     }
 
     /**

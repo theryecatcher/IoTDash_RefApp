@@ -34,11 +34,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FieldTypeSelectionFilter }
+     * Create an instance of {@link SelectionFilter }
      * 
      */
-    public FieldTypeSelectionFilter createFieldTypeSelectionFilter() {
-        return new FieldTypeSelectionFilter();
+    public SelectionFilter createSelectionFilter() {
+        return new SelectionFilter();
     }
 
     /**
@@ -50,19 +50,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link OsaSelectionFilter }
+     * Create an instance of {@link FieldTypeSelectionFilter }
      * 
      */
-    public OsaSelectionFilter createOsaSelectionFilter() {
-        return new OsaSelectionFilter();
+    public FieldTypeSelectionFilter createFieldTypeSelectionFilter() {
+        return new FieldTypeSelectionFilter();
     }
 
     /**
-     * Create an instance of {@link SelectionFilter }
+     * Create an instance of {@link FieldIdentifierNestedValue }
      * 
      */
-    public SelectionFilter createSelectionFilter() {
-        return new SelectionFilter();
+    public FieldIdentifierNestedValue createFieldIdentifierNestedValue() {
+        return new FieldIdentifierNestedValue();
     }
 
     /**
@@ -74,11 +74,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FieldIdentifierNestedValue }
+     * Create an instance of {@link OsaSelectionFilter }
      * 
      */
-    public FieldIdentifierNestedValue createFieldIdentifierNestedValue() {
-        return new FieldIdentifierNestedValue();
+    public OsaSelectionFilter createOsaSelectionFilter() {
+        return new OsaSelectionFilter();
     }
 
     /**

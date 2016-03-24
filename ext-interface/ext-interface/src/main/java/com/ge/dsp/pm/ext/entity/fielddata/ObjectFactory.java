@@ -37,27 +37,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link OsaData }
+     * 
+     */
+    public OsaData createOsaData() {
+        return new OsaData();
+    }
+
+    /**
      * Create an instance of {@link FieldDataList }
      * 
      */
     public FieldDataList createFieldDataList() {
         return new FieldDataList();
-    }
-
-    /**
-     * Create an instance of {@link Fields }
-     * 
-     */
-    public Fields createFields() {
-        return new Fields();
-    }
-
-    /**
-     * Create an instance of {@link KnownDataTypes }
-     * 
-     */
-    public KnownDataTypes createKnownDataTypes() {
-        return new KnownDataTypes();
     }
 
     /**
@@ -69,19 +61,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link OsaData }
-     * 
-     */
-    public OsaData createOsaData() {
-        return new OsaData();
-    }
-
-    /**
      * Create an instance of {@link FieldData }
      * 
      */
     public FieldData createFieldData() {
         return new FieldData();
+    }
+
+    /**
+     * Create an instance of {@link KnownDataTypes }
+     * 
+     */
+    public KnownDataTypes createKnownDataTypes() {
+        return new KnownDataTypes();
+    }
+
+    /**
+     * Create an instance of {@link Fields }
+     * 
+     */
+    public Fields createFields() {
+        return new Fields();
     }
 
     /**

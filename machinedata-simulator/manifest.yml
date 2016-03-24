@@ -7,3 +7,8 @@ applications:
 env:
     machineControllerId: 2
     predix_dataingestion_service_uri: http://dev-dataingestion-service.grc-apps.svc.ice.ge.com
+    predix_tenantId:
+    predix_grantType: client_credentials
+    predix_oAuthUrl:
+    predix_userName: dashUser
+    predix_password: password

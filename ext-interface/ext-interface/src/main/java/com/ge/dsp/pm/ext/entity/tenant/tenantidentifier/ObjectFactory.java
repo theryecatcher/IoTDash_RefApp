@@ -35,19 +35,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TenantIdentifierList }
-     * 
-     */
-    public TenantIdentifierList createTenantIdentifierList() {
-        return new TenantIdentifierList();
-    }
-
-    /**
      * Create an instance of {@link TenantIdentifier }
      * 
      */
     public TenantIdentifier createTenantIdentifier() {
         return new TenantIdentifier();
+    }
+
+    /**
+     * Create an instance of {@link TenantIdentifierList }
+     * 
+     */
+    public TenantIdentifierList createTenantIdentifierList() {
+        return new TenantIdentifierList();
     }
 
     /**

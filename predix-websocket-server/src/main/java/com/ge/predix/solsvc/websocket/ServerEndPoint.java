@@ -21,17 +21,17 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 @Component
-@ServerEndpoint(value="/livestream/{nodeId}")
+@ServerEndpoint(value="/livestream/{sensorName}")
 public class ServerEndPoint{
 	
-	private String nodeId;
+	private String sensorName;
 	
 	private static Logger _logger = LoggerFactory.getLogger(ServerEndPoint.class);
 	
     @OnOpen
-    public void onOpen(@PathParam(value="nodeId") String nodeId, final Session session, EndpointConfig ec) {
-    	this.nodeId = nodeId;
-    	_logger.info("Server: opened... for Node Id : "+nodeId+" : " + session.getId()); //$NON-NLS-1$
+    public void onOpen(@PathParam(value="sensorName") String sensorName, final Session session, EndpointConfig ec) {
+    	this.sensorName = sensorName;
+    	_logger.info("Server: opened... for Node Id : "+sensorName+" : " + session.getId()); //$NON-NLS-1$
     	/*try {
 			session.getBasicRemote().sendText("Nunmber of open connections : "+session.getOpenSessions().size());
 		} catch (Exception e) {
@@ -43,14 +43,14 @@ public class ServerEndPoint{
     public void OnMessage(String message,Session session) throws IOException {
     	//_logger.info("Message : "+message);
     	try {
-    	if ("messages".equalsIgnoreCase(nodeId)) {
+    	if ("messages".equalsIgnoreCase(sensorName)) {
     		JsonParser parser = new JsonParser();
     		JsonObject o = (JsonObject)parser.parse(message);
     		JsonArray nodes = o.getAsJsonArray("body");
     		for(Session s : session.getOpenSessions()){
-    			if (!"messages".equals(s.getPathParameters().get("nodeId"))) {
-    				String pNodeName = s.getPathParameters().get("nodeId");
-    				JsonObject node = findJsonObjectByName(nodes, pNodeName);
+    			if (!"messages".equals(s.getPathParameters().get("sensorName"))) {
+    				String pSensorName = s.getPathParameters().get("sensorName");
+    				JsonObject node = findJsonObjectByName(nodes, pSensorName);
     				if (node != null) {
     					s.getBasicRemote().sendText(node.toString());
     				}
@@ -66,11 +66,11 @@ public class ServerEndPoint{
     	}
     }
 
-    private JsonObject findJsonObjectByName(JsonArray nodes,String pNodeName){
+    private JsonObject findJsonObjectByName(JsonArray nodes,String pSensorName){
     	for (int i=0;i<nodes.size();i++) {
     		JsonObject node = (JsonObject)nodes.get(i);
-    		String nodeName = node.get("name").getAsString();
-    		if (pNodeName.equalsIgnoreCase(nodeName.trim())) {
+    		String nodeName = node.get("sensorName").getAsString();
+    		if (pSensorName.equalsIgnoreCase(nodeName.trim())) {
     			return node;
     		}
     	}

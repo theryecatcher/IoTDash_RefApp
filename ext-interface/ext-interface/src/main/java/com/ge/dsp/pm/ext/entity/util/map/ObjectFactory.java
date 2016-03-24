@@ -37,11 +37,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SimpleMap }
+     * Create an instance of {@link Map }
      * 
      */
-    public SimpleMap createSimpleMap() {
-        return new SimpleMap();
+    public Map createMap() {
+        return new Map();
     }
 
     /**
@@ -53,11 +53,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Map }
+     * Create an instance of {@link SimpleMap }
      * 
      */
-    public Map createMap() {
-        return new Map();
+    public SimpleMap createSimpleMap() {
+        return new SimpleMap();
     }
 
     /**

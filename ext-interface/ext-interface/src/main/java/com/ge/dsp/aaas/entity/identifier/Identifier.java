@@ -51,10 +51,10 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "name"
 })
 @XmlSeeAlso({
+    AssetIdentifier.class,
     SolutionIdentifier.class,
     PortIdentifier.class,
-    FieldIdentifier.class,
-    AssetIdentifier.class
+    FieldIdentifier.class
 })
 @JsonTypeInfo(include = JsonTypeInfo.As.PROPERTY, use = JsonTypeInfo.Id.NAME, property = "@type")
 public class Identifier
