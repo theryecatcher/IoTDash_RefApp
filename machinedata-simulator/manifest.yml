@@ -1,14 +1,9 @@
 ---
 applications:
-  - name: dev-machinedata-simulator
-    buildpack: java_buildpack
-    path: target/machinedata-simulator-1.1.0-SNAPSHOT.jar
+  - name: infy-iot-machinedata-simulator
+    path: target/machinedata-simulator-1.1.5.jar
     timeout: 120
 env:
     machineControllerId: 2
-    predix_dataingestion_service_uri: http://dev-dataingestion-service.grc-apps.svc.ice.ge.com
-    predix_tenantId:
-    predix_grantType: client_credentials
-    predix_oAuthUrl:
-    predix_userName: dashUser
-    predix_password: password
+    predix_dataingestion_service_uri: http://infy-dataingestion-service.run.aws-usw02-pr.ice.predix.io/SaveTimeSeriesData
+    predixWebSocketURI: wss://infy-iot-websocket-server.run.aws-usw02-pr.ice.predix.io/livestream/messages

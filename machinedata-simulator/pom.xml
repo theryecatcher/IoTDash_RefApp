@@ -5,7 +5,7 @@
 
 	<groupId>com.ge.predix.solsvc</groupId>
 	<artifactId>machinedata-simulator</artifactId>
-	<version>1.1.0</version>
+	<version>1.1.5</version>
 	<packaging>jar</packaging>
 
 	<description>Machine Data Simulator</description>
@@ -73,26 +73,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-websocket</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-messaging</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.kairosdb</groupId>
 			<artifactId>client</artifactId>
 			<version>2.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.ge.predix.solsvc</groupId>
-			<artifactId>timeseries-bootstrap</artifactId>
-			<version>1.2.0</version>
 		</dependency>
 	</dependencies>
 	<build>

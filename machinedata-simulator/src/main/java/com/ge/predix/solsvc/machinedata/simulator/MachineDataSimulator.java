@@ -10,15 +10,10 @@ import java.util.List;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.message.BasicHeader;
-import org.apache.http.message.BasicNameValuePair;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,9 +21,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.ge.predix.solsvc.bootstrap.tbs.entity.InjectionBody;
-import com.ge.predix.solsvc.bootstrap.tbs.entity.InjectionMetric;
-import com.ge.predix.solsvc.bootstrap.tbs.entity.InjectionMetricBuilder;
+import com.ge.predix.solsvc.machinedata.entities.InjectionBody;
+import com.ge.predix.solsvc.machinedata.entities.InjectionMetric;
+import com.ge.predix.solsvc.machinedata.entities.InjectionMetricBuilder;
 import com.ge.predix.solsvc.machinedata.websocket.WebSocketClient;
 import com.ge.predix.solsvc.machinedata.websocket.WebSocketConfig;
 
@@ -43,19 +38,18 @@ public class MachineDataSimulator
 	 * 
 	 */
 	static final Logger log = LoggerFactory.getLogger(MachineDataSimulator.class);
-	static String accessToken;
-
-	@Autowired
-	private WebSocketConfig wsConfig;
-
-	@Autowired
-	private WebSocketClient wsClient;
 
 	/**
 	 * 
 	 */
 	@Autowired
 	ApplicationProperties applicationProperties;
+
+	@Autowired
+	private WebSocketConfig wsConfig;
+
+	@Autowired
+	private WebSocketClient wsClient;
 
 
 	/**
@@ -64,10 +58,7 @@ public class MachineDataSimulator
 	@Scheduled(fixedDelay=3000)
 	public void run()
 	{
-		if (accessToken.equals(null))
-		{
-			getHeader();
-		}
+
 		try
 		{
 			runTest();
@@ -84,22 +75,20 @@ public class MachineDataSimulator
 	 */
 	public String runTest() throws Exception
 	{
-		// List<JSONData> list = generateMockDataMap_RT();
+		//		List<JSONData> list = generateMockDataMap_RT();
 		List<SensorDetails> list = generateMockDataMap_RT();
-		ObjectMapper mapper = new ObjectMapper();
-		StringWriter writer = new StringWriter();
+		/*ObjectMapper mapper = new ObjectMapper();
+        StringWriter writer = new StringWriter();
 
-		mapper.writeValue(writer, list);
+        mapper.writeValue(writer, list);
+        return postData(writer.toString());*/
+
 		postDataToWS(list);
-		return "Success";
-//		return postDataToTS(writer.toString());
+		return "success";
 
 	}
 	/**
 	 * @return -
-	 */
-	/**
-	 * @return
 	 */
 	List<SensorDetails> generateMockDataMap_RT()
 	{
@@ -168,14 +157,15 @@ public class MachineDataSimulator
         data.setUnit(machineControllerId);
         list.add(data);
 
-        return list;*/ 
+        return list;*/
 
 		List<SensorDetails> list = new ArrayList<SensorDetails>();    	
 		ArrayList<SensorReading> readingList = new ArrayList<SensorReading>();
+		long epoch = getCurrentTimestamp();
 
 		SensorReading reading = new SensorReading();
-		reading.setEpoch(getCurrentTimestamp().toString());
-		reading.setValue(String.valueOf(generateRandomUsageValue(0.001, 2.999)));
+		reading.setEpoch(epoch);
+		reading.setValue(generateRandomUsageValue(0.001, 2.999));
 		readingList.clear();
 		readingList.add(reading);
 
@@ -187,8 +177,8 @@ public class MachineDataSimulator
 		data.setSensorReadings(readingList);    	
 		list.add(data);
 
-		reading.setEpoch(getCurrentTimestamp().toString());
-		reading.setValue(String.valueOf(generateRandomUsageValue(0.001, 2.999)));
+		reading.setEpoch(epoch);
+		reading.setValue(generateRandomUsageValue(0.001, 2.999));
 		readingList.clear();
 		readingList.add(reading);
 
@@ -200,8 +190,8 @@ public class MachineDataSimulator
 		data.setSensorReadings(readingList);    	
 		list.add(data);
 
-		reading.setEpoch(getCurrentTimestamp().toString());
-		reading.setValue(String.valueOf(generateRandomUsageValue(0.001, 2.999)));
+		reading.setEpoch(epoch);
+		reading.setValue(generateRandomUsageValue(0.001, 2.999));
 		readingList.clear();
 		readingList.add(reading);
 
@@ -213,8 +203,8 @@ public class MachineDataSimulator
 		data.setSensorReadings(readingList);    	
 		list.add(data);
 
-		reading.setEpoch(getCurrentTimestamp().toString());
-		reading.setValue(String.valueOf(generateRandomUsageValue(0.001, 2.999)));
+		reading.setEpoch(epoch);
+		reading.setValue(generateRandomUsageValue(0.001, 2.999));
 		readingList.clear();
 		readingList.add(reading);
 
@@ -226,8 +216,8 @@ public class MachineDataSimulator
 		data.setSensorReadings(readingList);    	
 		list.add(data);
 
-		reading.setEpoch(getCurrentTimestamp().toString());
-		reading.setValue(String.valueOf(generateRandomUsageValue(0.001, 2.999)));
+		reading.setEpoch(epoch);
+		reading.setValue(generateRandomUsageValue(0.001, 2.999));
 		readingList.clear();
 		readingList.add(reading);
 
@@ -240,14 +230,14 @@ public class MachineDataSimulator
 		list.add(data);
 
 		return list;
-
 	}
 
-	private Timestamp getCurrentTimestamp()
+	private long getCurrentTimestamp()
 	{
 		java.util.Date date = new java.util.Date();
-		Timestamp ts = new Timestamp(date.getTime());
-		return ts;
+//		Timestamp ts = new Timestamp(date.getTime());
+		long epoch = date.getTime();
+		return epoch;
 	}
 
 	private static double generateRandomUsageValue(double low, double high)
@@ -255,14 +245,11 @@ public class MachineDataSimulator
 		return low + Math.random() * (high - low);
 	}
 
-	/**
-	 * Posts the Data to Time Series Service.
-	 * @param content
-	 * @return
-	 */
 	@SuppressWarnings("resource")
-	private String postDataToTS(String content)
-	{   
+	private String postData(String content)
+	{
+
+
 		HttpClient client = null;
 		try
 		{
@@ -290,9 +277,8 @@ public class MachineDataSimulator
 			}
 			log.info("Service URL : " + serviceURL); //$NON-NLS-1$
 			HttpPost request = new HttpPost(serviceURL);
-			request.setHeader(new BasicHeader("Authorization", "Bearer " + accessToken));
 			HttpEntity reqEntity = MultipartEntityBuilder.create().addTextBody("content", content) //$NON-NLS-1$
-					.addTextBody("clientId", "infyOAuth") //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+					.addTextBody("destinationId", "TimeSeries").addTextBody("clientId", "TimeSeries") //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 					.addTextBody("tenantId", this.applicationProperties.getTenantId()).build(); //$NON-NLS-1$
 			request.setEntity(reqEntity);
 			HttpResponse response = client.execute(request);
@@ -318,77 +304,41 @@ public class MachineDataSimulator
 		}
 	}
 
-	/**
-	 * Fetches the Access Token from the OAuth URL and assigns to the static variable
-	 * Author : Anoop
-	 */
-	private void getHeader(){
-		try
-		{
-			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
-			nameValuePairs.add(new BasicNameValuePair("grant_type", this.applicationProperties.getGrantType()));
-			nameValuePairs.add(new BasicNameValuePair("username", this.applicationProperties.getUserName()));
-			nameValuePairs.add(new BasicNameValuePair("password", this.applicationProperties.getPassword()));
-
-			HttpClient httpClient = null;
-			String paramsString = URLEncodedUtils.format(nameValuePairs, "UTF-8");
-			HttpGet httpGet = new HttpGet(this.applicationProperties.getoAuthUrl() + "?" + paramsString);
-			httpGet.setHeader("Authorization", "Basic aW5meU9BdXRoOnBhc3N3b3Jk");
-			HttpResponse response = httpClient.execute(httpGet);
-
-			ObjectMapper mapper = new ObjectMapper();
-			UAAResponse queryResponse = mapper.readValue(response.getEntity().getContent(), UAAResponse.class);
-
-			accessToken = queryResponse.getAccessToken();
-		}
-		catch (Exception e)
-		{
-			log.error("Unable to Fetch Token ", e); //$NON-NLS-1$            
-		}		
-	}
-
-	/**
-	 * Posts the Data to Web Socket Server.
-	 * @param data
-	 * Author : Anoop
-	 */
 	private void postDataToWS(List<SensorDetails> list)
 	{
 		try
 		{
 			InjectionMetricBuilder builder = InjectionMetricBuilder.getInstance();
-			
+			InjectionMetric metric = new InjectionMetric(new Long(System.currentTimeMillis()));
+
 			for (SensorDetails details : list)
-			{
-				InjectionMetric metric = new InjectionMetric(new Long(System.currentTimeMillis()));
+			{				
 				InjectionBody body = new InjectionBody(details.getSensorName());
-				
+
 				body.addAttributes("sourceTagName",details.getSensorName());
-                body.addAttributes("sourceTagID",details.getSensorID());
-                body.addAttributes("MaxValue",details.getMaxValue());
-                body.addAttributes("MinValue",details.getMinValue());
-                
-                int count = details.getSensorReadings().size();
-                for (int i = 0 ; i <count; i++)
-                {
-                	// log.info(details.SensorReadings.get(i).epoch);
-                	// log.info(details.SensorReadings.get(i).value);
-                    body.addDataPoint(Long.parseLong(details.getSensorReadings().get(i).getEpoch()),Double.parseDouble(details.getSensorReadings().get(i).getValue()));
-                }
-                
-                metric.getBody().add(body);
-                builder.addMetrics(metric);
+				body.addAttributes("sourceTagID",details.getSensorID());
+				body.addAttributes("MaxValue",details.getMaxValue());
+				body.addAttributes("MinValue",details.getMinValue());
+
+				int count = details.getSensorReadings().size();
+				for (int i = 0 ; i <count; i++)
+				{
+					log.info(String.valueOf(details.getSensorReadings().get(i).getEpoch()));
+					// log.info(details.SensorReadings.get(i).value);
+					body.addDataPoint(details.getSensorReadings().get(i).getEpoch(),details.getSensorReadings().get(i).getValue());
+				}
+
+				metric.getBody().add(body);				
 			}
-			
-			log.info(builder.build());
+
+			builder.addMetrics(metric);
 
 			wsClient.postToWebSocketServer(builder.build());
 			log.info("Posted Data to Websocket"); //$NON-NLS-1$
 		}
 		catch (Throwable e)
 		{
-			log.error("Unable to post data to Websocket", e.getLocalizedMessage()); //$NON-NLS-1$
+			log.error("Unable to post data to Websocket " + e.getMessage()); //$NON-NLS-1$
 		}
-
 	}
 }

@@ -2,22 +2,22 @@ package com.ge.predix.solsvc.machinedata.simulator;
 
 
 public class SensorReading {
-	private String epoch;
-	private String value;
+	private long epoch;
+	private double value;
 	
-	public String getEpoch() {
+	public long getEpoch() {
 		return epoch;
 	}
 	
-	public void setEpoch(String epoch) {
+	public void setEpoch(long epoch) {
 		this.epoch = epoch;
 	}
 	
-	public String getValue() {
+	public double getValue() {
 		return value;
 	}
 	
-	public void setValue(String value) {
+	public void setValue(double value) {
 		this.value = value;
 	}
 	

@@ -41,12 +41,13 @@ public class ServerEndPoint{
     
     @OnMessage
     public void OnMessage(String message,Session session) throws IOException {
-    	//_logger.info("Message : "+message);
+    	_logger.info("Message : "+message);
     	try {
     	if ("messages".equalsIgnoreCase(sensorName)) {
     		JsonParser parser = new JsonParser();
     		JsonObject o = (JsonObject)parser.parse(message);
     		JsonArray nodes = o.getAsJsonArray("body");
+    		_logger.info("Parsed");
     		for(Session s : session.getOpenSessions()){
     			if (!"messages".equals(s.getPathParameters().get("sensorName"))) {
     				String pSensorName = s.getPathParameters().get("sensorName");
@@ -57,7 +58,7 @@ public class ServerEndPoint{
     			}
     		}
     		String response = "{\"messageId\": "+o.get("messageId").getAsLong()+",\"statusCode\": 202}";
-    		//_logger.info("Response : "+response);
+    		_logger.info("Response : "+response);
 			session.getBasicRemote().sendText(response);
     	}else {
     		session.getBasicRemote().sendText("SUCCESS");
@@ -69,7 +70,7 @@ public class ServerEndPoint{
     private JsonObject findJsonObjectByName(JsonArray nodes,String pSensorName){
     	for (int i=0;i<nodes.size();i++) {
     		JsonObject node = (JsonObject)nodes.get(i);
-    		String nodeName = node.get("sensorName").getAsString();
+    		String nodeName = node.get("name").getAsString();
     		if (pSensorName.equalsIgnoreCase(nodeName.trim())) {
     			return node;
     		}
