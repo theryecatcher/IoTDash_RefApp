@@ -30,9 +30,12 @@ import com.ge.predix.solsvc.bootstrap.tsb.factories.TimeseriesFactory;
 import com.ge.predix.solsvc.dataingestion.api.Constants;
 import com.ge.predix.solsvc.dataingestion.service.type.JSONData;
 import com.ge.predix.solsvc.dataingestion.service.type.SensorDetails;
+import com.ge.predix.solsvc.dataingestion.service.type.SimulateSchema;
+import com.ge.predix.solsvc.dataingestion.service.type.SimulateSchemaSensors;
 import com.ge.predix.solsvc.dataingestion.websocket.WSClientEndpointConfig;
 import com.ge.predix.solsvc.dataingestion.websocket.WebSocketClient;
 import com.ge.predix.solsvc.dataingestion.websocket.WebSocketConfig;
+import com.ge.predix.solsvc.dataingestion.websocket.WebSocketServerClient;
 
 /**
  * 
@@ -41,7 +44,7 @@ import com.ge.predix.solsvc.dataingestion.websocket.WebSocketConfig;
 @Component
 public class TimeSeriesDataIngestionHandler extends BaseFactoryIT
 {
-    private static Logger              log = Logger.getLogger(TimeSeriesDataIngestionHandler.class);
+    private static Logger tsDiHandlerlog = Logger.getLogger(TimeSeriesDataIngestionHandler.class);
     @Autowired
     private TimeseriesFactory timeSeriesFactory;
 
@@ -57,6 +60,12 @@ public class TimeSeriesDataIngestionHandler extends BaseFactoryIT
 	
 	@Autowired
 	private WebSocketClient wsClient;
+	
+	@Autowired
+	private WebSocketServerClient wsServerClient;
+	
+	private String[] simulateSets = new String[]{"Tst8", "Tst9", "Tst10", "Tst11", "Tst12"};
+	
     /**
      *  -
      */
@@ -64,16 +73,16 @@ public class TimeSeriesDataIngestionHandler extends BaseFactoryIT
     @PostConstruct
     public void intilizeDataIngestionHandler()
     {
-        log.info("*******************TimeSeriesDataIngestionHandler Initialization complete*********************");
+    	tsDiHandlerlog.info("*******************TimeSeriesDataIngestionHandler Initialization complete*********************");
     }
 
     @Override
     @SuppressWarnings("nls")
     public void handleData(String tenentId, String controllerId, String data, String authorization)
     {
-        log.debug(data);
+    	tsDiHandlerlog.debug(data);
         if (StringUtils.isEmpty(authorization)) {
-        	log.info("reading credentials from "+restConfig.getOauthClientId());
+        	tsDiHandlerlog.info("reading credentials from "+restConfig.getOauthClientId());
         	String[] oauthClient  = restConfig.getOauthClientId().split(":");
         	authorization = "Bearer "+getRestTemplate(oauthClient[0],oauthClient[1]).getAccessToken().getValue();
         }
@@ -86,8 +95,8 @@ public class TimeSeriesDataIngestionHandler extends BaseFactoryIT
             {
                 //
             });
-            log.info("TimeSeries URL : " + this.tsInjectionWSConfig.getInjectionUri() );
-            log.info("WebSocket URL : " + this.wsConfig.getPredixWebSocketURI());
+            tsDiHandlerlog.info("TimeSeries URL : " + this.tsInjectionWSConfig.getInjectionUri() );
+            tsDiHandlerlog.info("WebSocket URL : " + this.wsConfig.getPredixTsWebSocketURI());
             for (SensorDetails details : list)
             {
             	// Long i=new Long(System.currentTimeMillis());
@@ -136,7 +145,7 @@ public class TimeSeriesDataIngestionHandler extends BaseFactoryIT
                 	log.warn("4. asset not found, unable to find filter=" + filter + " = " + value + " nodeName="
                             + nodeName + " authorization=" + authorization);
                 }*/
-            	WSClientEndpointConfig.SetAuthorizationAndZone(authorization, tenentId);
+//            	WSClientEndpointConfig.SetAuthorizationAndZone(authorization, tenentId);
             	
                 InjectionMetricBuilder builder = InjectionMetricBuilder.getInstance();
                 InjectionMetric metric = new InjectionMetric(new Long(System.currentTimeMillis()));
@@ -164,11 +173,56 @@ public class TimeSeriesDataIngestionHandler extends BaseFactoryIT
                 
                 this.timeSeriesFactory.create(builder);
                 
-                log.info("Added Data to Timeseries");
+                tsDiHandlerlog.info("Added Data to Timeseries");
                                                 
-                wsClient.postToWebSocketServer(builder.build());
-                log.info("Posted Data to Predix Websocket Server");
+//                wsClient.postToWebSocketServer(builder.build());
+                wsServerClient.postToWebSocketServer(builder.build());
+                tsDiHandlerlog.info("Posted Data to Timeseries Websocket Server");
             }                                    
+        }
+        catch (JsonParseException e)
+        {
+            throw new RuntimeException(e);
+        }
+        catch (JsonMappingException e)
+        {
+            throw new RuntimeException(e);
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    @Override
+    @SuppressWarnings("nls")
+    public void simulateData(String tenentId, String controllerId, String data, String authorization)
+    {
+    	tsDiHandlerlog.debug(data);
+    	if (StringUtils.isEmpty(authorization)) {
+        	tsDiHandlerlog.info("reading credentials from "+restConfig.getOauthClientId());
+        	String[] oauthClient  = restConfig.getOauthClientId().split(":");
+        	authorization = "Bearer "+getRestTemplate(oauthClient[0],oauthClient[1]).getAccessToken().getValue();
+        }
+        try
+        {
+        	ObjectMapper mapper = new ObjectMapper();
+        	List<SimulateSchema> list = mapper.readValue(data, new TypeReference<List<SimulateSchema>>()
+        	{
+        		
+        	});
+        	
+        	tsDiHandlerlog.info("TimeSeries URL : " + this.tsInjectionWSConfig.getInjectionUri() );
+            tsDiHandlerlog.info("WebSocket URL : " + this.wsConfig.getPredixTsWebSocketURI());
+            tsDiHandlerlog.info("WebSocket Server URL : " + this.wsConfig.getInfyWebSocketServerURI());
+        	
+            InjectionMetricBuilder builder = InjectionMetricBuilder.getInstance();
+			InjectionMetric metric = new InjectionMetric(new Long(System.currentTimeMillis()));
+			
+            for (SimulateSchema sensorTags : list)
+            {
+            	
+            }
         }
         catch (JsonParseException e)
         {
@@ -252,7 +306,7 @@ public class TimeSeriesDataIngestionHandler extends BaseFactoryIT
                 }
             }
 		}else {
-			log.warn("2. asset has no assetmeters with matching nodeName"+ nodeName);
+			tsDiHandlerlog.warn("2. asset has no assetmeters with matching nodeName"+ nodeName);
         }
         return ret;
     }

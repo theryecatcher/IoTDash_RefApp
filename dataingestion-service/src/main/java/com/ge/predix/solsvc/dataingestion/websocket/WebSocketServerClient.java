@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2015 General Electric Company. All rights reserved.
+ * Copyright (c) 2016 Infosys Limited. All rights reserved.
  *
  * The copyright to the computer software herein is the property of
- * General Electric Company. The software may be used and/or copied only
- * with the written permission of General Electric Company or in accordance
+ * Infosys Limited. The software may be used and/or copied only
+ * with the written permission of Infosys Limited or in accordance
  * with the terms and conditions stipulated in the agreement/contract
  * under which the software has been supplied.
  */
@@ -25,7 +25,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class WebSocketClient
+public class WebSocketServerClient
 {
 	private static Logger              log = Logger.getLogger(WebSocketClient.class);
     WebSocketContainer container = ContainerProvider.getWebSocketContainer();
@@ -34,7 +34,7 @@ public class WebSocketClient
     WebSocketConfig endPointConfig;
     
     @Autowired
-    WebsocketEndpoint websocketEndpoint;
+    WebSocketServerEndpoint wsServerEndpoint;
     
     private Map<String,Session> sessions =  new HashMap<String,Session>();
     
@@ -47,29 +47,16 @@ public class WebSocketClient
         {
         	Session predixWSSession = sessions.get("messages");
  			 if (predixWSSession == null || !predixWSSession.isOpen()) {
- 				log.info("Opening New Connection : "+endPointConfig.getPredixTsWebSocketURI());
- 				URI predixTS_WebSocketURI = new URI(endPointConfig.getPredixTsWebSocketURI());
- 	            websocketEndpoint = new WebsocketEndpoint();
- 	            predixWSSession = container.connectToServer(websocketEndpoint, predixTS_WebSocketURI);
+ 				log.info("Opening New Connection : "+endPointConfig.getInfyWebSocketServerURI());
+ 				URI infyWebSocketServerURI = new URI(endPointConfig.getInfyWebSocketServerURI());
+ 				wsServerEndpoint = new WebSocketServerEndpoint();
+ 	            predixWSSession = container.connectToServer(wsServerEndpoint, infyWebSocketServerURI);
  	            predixWSSession.setMaxIdleTimeout(0);
  	            sessions.put("messages", predixWSSession);
  			 }else {
  				log.info("Reusing existing Connection");
  			 }
        	     predixWSSession.getBasicRemote().sendText(data);
-       	     /*predixWSSession.addMessageHandler(new MessageHandler.Whole<String>()
-                  {
-                      @Override
-                      public void onMessage(String response)
-                      {
-                    	  log.
-                    	  if (response != null && !"".equals(response)) {
-	                          InjectionResponse injectionResponse = new Gson().fromJson(response, InjectionResponse.class);
-	                          System.out.println("Status Response : "+injectionResponse.getStatusCode());
-	                          statusResponse.setStatusCode(injectionResponse.getStatusCode());
-                    	  }
-                      }
-                  });*/
         }
         catch(Exception ex)
         {
@@ -77,6 +64,5 @@ public class WebSocketClient
             throw new RuntimeException(ex);
         }
         return statusResponse;
-    }
-                    
+    }                    
 }

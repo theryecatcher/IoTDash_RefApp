@@ -24,10 +24,8 @@ import com.ge.predix.solsvc.bootstrap.ams.factories.AssetFactory;
 @Component
 public class DataIngestionHandler
 {
-    private static Logger          log = Logger.getLogger(DataHandler.class);
-    @Autowired
-    private AssetFactory           assetFactory;
-
+    private static Logger _debugLog = Logger.getLogger(DataIngestionHandler.class);
+    
     @Autowired
     private TimeSeriesDataIngestionHandler timeSeriesDataIngestionHandler;
 
@@ -44,7 +42,7 @@ public class DataIngestionHandler
     @PostConstruct
     public void intilizeDataIngestionHandler()
     {
-        log.info("*******************DataIngestionHandler Initialization complete*********************");
+    	_debugLog.info("*******************DataIngestionHandler Initialization complete*********************");
     }
 
     /**
@@ -58,6 +56,20 @@ public class DataIngestionHandler
     public String handleData(String tenantId, String controllerId, String data, String authorization)
     {
         this.timeSeriesDataIngestionHandler.handleData(tenantId, controllerId, data, authorization);
+        return "SUCCESS";
+    }
+    
+    /**
+     * @param tenantId -
+     * @param controllerId -
+     * @param data -
+     * @param authorization -
+     * @return -
+     */
+    @SuppressWarnings("nls")
+    public String simulateData(String tenantId, String controllerId, String data, String authorization)
+    {
+        this.timeSeriesDataIngestionHandler.simulateData(tenantId, controllerId, data, authorization);
         return "SUCCESS";
     }
 

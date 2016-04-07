@@ -96,6 +96,28 @@ public class DataIngestionServiceController
         }
 
     }
+    
+    @Override
+    @RequestMapping(value = "/StartSimulation", method = RequestMethod.POST)
+    public @ResponseBody String startSimulation(
+            @RequestHeader(value = "authorization", required = false) String authorization,
+            @RequestParam("clientId") String clientId, @RequestParam("tenantId") String tenantId,
+            @RequestBody() String content)
+    {
+        try
+        {
+        	log.debug("Content : "+content);
+            this.dataIngestionHandler.handleData(tenantId, clientId, content, authorization);
+            return "You successfully posted data";
+        }
+        catch (Exception e)
+        {
+        	e.printStackTrace();
+            log.error("Unable to Save " + content, e);
+            return "Request failed. " + e.getMessage();
+        }
+
+    }
 
     @Override
     @RequestMapping(value = "/ingestdata", method = RequestMethod.GET)

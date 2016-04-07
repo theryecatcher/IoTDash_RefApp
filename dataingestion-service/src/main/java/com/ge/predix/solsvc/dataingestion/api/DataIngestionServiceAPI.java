@@ -1,5 +1,6 @@
 package com.ge.predix.solsvc.dataingestion.api;
 
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -38,4 +39,9 @@ public interface DataIngestionServiceAPI
             @RequestHeader(value = "authorization", required = false) String authorization,
             @RequestParam("clientId") String clientId, @RequestParam("tenantId") String tenantId,
             @RequestParam("content") String content);
+    
+    public @ResponseBody String startSimulation(
+            @RequestHeader(value = "authorization", required = false) String authorization,
+            @RequestParam("clientId") String clientId, @RequestParam("tenantId") String tenantId,
+            @RequestBody() String content);
 }

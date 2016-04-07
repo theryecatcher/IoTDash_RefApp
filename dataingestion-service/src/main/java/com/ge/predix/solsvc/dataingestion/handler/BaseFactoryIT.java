@@ -120,5 +120,10 @@ public abstract class BaseFactoryIT {
         // TODO Auto-generated method stub
         
     }
+    
+    public void simulateData(String tenentId, String controllerId, String data, String authorization)
+    {
+    	
+    }
 
 }

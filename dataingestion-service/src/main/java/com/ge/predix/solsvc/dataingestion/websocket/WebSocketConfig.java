@@ -19,27 +19,45 @@ import org.springframework.stereotype.Component;
 public class WebSocketConfig implements EnvironmentAware
 {
     
-    @Value("${predixWebSocketURI}")
-    String predixWebSocketURI;
+    @Value("${predixTsWebSocketURI}")
+    String predixTsWebSocketURI;
+    
+    @Value("${infyWebSocketServerURI}")
+    String infyWebSocketServerURI;
     
     /**
 	 * @return the predixWebSocketURI
 	 */
-	public String getPredixWebSocketURI() {
-		return predixWebSocketURI.trim();
+	public String getPredixTsWebSocketURI() {
+		return predixTsWebSocketURI.trim();
 	}
 
 	/**
 	 * @param predixWebSocketURI the predixWebSocketURI to set
 	 */
-	public void setPredixWebSocketURI(String predixWebSocketURI) {
-		this.predixWebSocketURI = predixWebSocketURI;
+	public void setPredixWebSocketURI(String predixTsWebSocketURI) {
+		this.predixTsWebSocketURI = predixTsWebSocketURI;
 	}
 
 	@Override
 	public void setEnvironment(Environment env) {
-		this.predixWebSocketURI = env.getProperty("predixWebSocketURI");
+		this.predixTsWebSocketURI = env.getProperty("predixWebSocketURI");
+		this.infyWebSocketServerURI = env.getProperty("infyWebSocketServerURI");
+		
 		
 	}
     
+    /**
+	 * @return the infyWebSocketServerURI
+	 */
+	public String getInfyWebSocketServerURI() {
+		return infyWebSocketServerURI.trim();
+	}
+
+	/**
+	 * @param infyWebSocketServerURI the infyWebSocketServerURI to set
+	 */
+	public void setinfyWebSocketServerURI(String infyWebSocketServerURI) {
+		this.infyWebSocketServerURI = infyWebSocketServerURI;
+	}    
 }
