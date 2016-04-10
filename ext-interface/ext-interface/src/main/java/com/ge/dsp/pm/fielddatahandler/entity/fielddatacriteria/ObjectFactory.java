@@ -35,19 +35,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FieldDataCriteria }
-     * 
-     */
-    public FieldDataCriteria createFieldDataCriteria() {
-        return new FieldDataCriteria();
-    }
-
-    /**
      * Create an instance of {@link FieldDataCriteriaList }
      * 
      */
     public FieldDataCriteriaList createFieldDataCriteriaList() {
         return new FieldDataCriteriaList();
+    }
+
+    /**
+     * Create an instance of {@link FieldDataCriteria }
+     * 
+     */
+    public FieldDataCriteria createFieldDataCriteria() {
+        return new FieldDataCriteria();
     }
 
     /**

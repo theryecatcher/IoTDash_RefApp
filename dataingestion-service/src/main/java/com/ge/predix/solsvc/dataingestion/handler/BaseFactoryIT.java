@@ -1,11 +1,14 @@
 package com.ge.predix.solsvc.dataingestion.handler;
 
+import java.util.ArrayList;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.ge.predix.solsvc.bootstrap.ams.common.AssetRestConfig;
 import com.ge.predix.solsvc.bootstrap.tsb.client.TimeseriesRestConfig;
+import com.ge.predix.solsvc.dataingestion.service.type.SimulateSchema;
 import com.ge.predix.solsvc.restclient.config.IOauthRestConfig;
 import com.ge.predix.solsvc.restclient.impl.CxfAwareRestClient;
 
@@ -121,7 +124,12 @@ public abstract class BaseFactoryIT {
         
     }
     
-    public void simulateData(String tenentId, String controllerId, String data, String authorization)
+    public void runSimulator(String dataName, ArrayList<Double> dataReadings)
+    {
+    	
+    }
+    
+    public void simulateData(SimulateSchema data)
     {
     	
     }

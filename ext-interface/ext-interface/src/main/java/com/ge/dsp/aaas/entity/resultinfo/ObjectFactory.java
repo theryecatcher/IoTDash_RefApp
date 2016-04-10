@@ -35,19 +35,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ResultInfo }
-     * 
-     */
-    public ResultInfo createResultInfo() {
-        return new ResultInfo();
-    }
-
-    /**
      * Create an instance of {@link ResultInfoList }
      * 
      */
     public ResultInfoList createResultInfoList() {
         return new ResultInfoList();
+    }
+
+    /**
+     * Create an instance of {@link ResultInfo }
+     * 
+     */
+    public ResultInfo createResultInfo() {
+        return new ResultInfo();
     }
 
     /**

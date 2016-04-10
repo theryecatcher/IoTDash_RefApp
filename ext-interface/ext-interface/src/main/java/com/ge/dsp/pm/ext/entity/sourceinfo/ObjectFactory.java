@@ -35,19 +35,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SourceInfoList }
-     * 
-     */
-    public SourceInfoList createSourceInfoList() {
-        return new SourceInfoList();
-    }
-
-    /**
      * Create an instance of {@link SourceInfo }
      * 
      */
     public SourceInfo createSourceInfo() {
         return new SourceInfo();
+    }
+
+    /**
+     * Create an instance of {@link SourceInfoList }
+     * 
+     */
+    public SourceInfoList createSourceInfoList() {
+        return new SourceInfoList();
     }
 
     /**

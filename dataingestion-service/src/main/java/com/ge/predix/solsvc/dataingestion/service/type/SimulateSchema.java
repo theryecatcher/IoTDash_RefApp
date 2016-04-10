@@ -5,19 +5,19 @@ import java.util.ArrayList;
 public class SimulateSchema {
 		
 	private String name;
-    private ArrayList<SimulateSchemaSensors> readings;
+    private ArrayList<Double> readings;
     
 	/**
 	 * @return the readings
 	 */
-	public ArrayList<SimulateSchemaSensors> getReadings() {
+	public ArrayList<Double> getReadings() {
 		return readings;
 	}
 	
 	/**
 	 * @param readings the readings to set
 	 */
-	public void setReadings(ArrayList<SimulateSchemaSensors> readings) {
+	public void setReadings(ArrayList<Double> readings) {
 		this.readings = readings;
 	}
 

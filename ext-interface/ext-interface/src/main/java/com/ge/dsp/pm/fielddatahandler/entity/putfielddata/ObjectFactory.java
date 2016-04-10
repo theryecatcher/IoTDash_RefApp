@@ -30,14 +30,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PutFieldDataRequest }
-     * 
-     */
-    public PutFieldDataRequest createPutFieldDataRequest() {
-        return new PutFieldDataRequest();
-    }
-
-    /**
      * Create an instance of {@link PutFieldDataCriteria }
      * 
      */
@@ -51,6 +43,14 @@ public class ObjectFactory {
      */
     public PutFieldDataResult createPutFieldDataResult() {
         return new PutFieldDataResult();
+    }
+
+    /**
+     * Create an instance of {@link PutFieldDataRequest }
+     * 
+     */
+    public PutFieldDataRequest createPutFieldDataRequest() {
+        return new PutFieldDataRequest();
     }
 
 }

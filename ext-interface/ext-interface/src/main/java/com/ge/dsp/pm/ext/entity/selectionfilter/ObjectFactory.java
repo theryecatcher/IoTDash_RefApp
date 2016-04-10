@@ -58,19 +58,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FieldIdentifierNestedValue }
-     * 
-     */
-    public FieldIdentifierNestedValue createFieldIdentifierNestedValue() {
-        return new FieldIdentifierNestedValue();
-    }
-
-    /**
      * Create an instance of {@link NestedSelectionFilter }
      * 
      */
     public NestedSelectionFilter createNestedSelectionFilter() {
         return new NestedSelectionFilter();
+    }
+
+    /**
+     * Create an instance of {@link FieldIdentifierNestedValue }
+     * 
+     */
+    public FieldIdentifierNestedValue createFieldIdentifierNestedValue() {
+        return new FieldIdentifierNestedValue();
     }
 
     /**

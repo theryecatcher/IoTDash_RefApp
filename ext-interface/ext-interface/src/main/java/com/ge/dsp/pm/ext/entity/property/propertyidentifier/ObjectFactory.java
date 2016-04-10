@@ -35,19 +35,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PropertyIdentifier }
-     * 
-     */
-    public PropertyIdentifier createPropertyIdentifier() {
-        return new PropertyIdentifier();
-    }
-
-    /**
      * Create an instance of {@link PropertyIdentifierList }
      * 
      */
     public PropertyIdentifierList createPropertyIdentifierList() {
         return new PropertyIdentifierList();
+    }
+
+    /**
+     * Create an instance of {@link PropertyIdentifier }
+     * 
+     */
+    public PropertyIdentifier createPropertyIdentifier() {
+        return new PropertyIdentifier();
     }
 
     /**

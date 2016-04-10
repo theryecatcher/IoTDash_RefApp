@@ -37,19 +37,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AttributeDef }
-     * 
-     */
-    public AttributeDef createAttributeDef() {
-        return new AttributeDef();
-    }
-
-    /**
      * Create an instance of {@link AttributeDefList }
      * 
      */
     public AttributeDefList createAttributeDefList() {
         return new AttributeDefList();
+    }
+
+    /**
+     * Create an instance of {@link AttributeDef }
+     * 
+     */
+    public AttributeDef createAttributeDef() {
+        return new AttributeDef();
     }
 
     /**

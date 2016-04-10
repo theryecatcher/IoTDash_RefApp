@@ -2,6 +2,7 @@ package com.ge.predix.solsvc.dataingestion.handler;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -15,6 +16,7 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsResourceDetails;
 import org.springframework.stereotype.Component;
@@ -31,11 +33,12 @@ import com.ge.predix.solsvc.dataingestion.api.Constants;
 import com.ge.predix.solsvc.dataingestion.service.type.JSONData;
 import com.ge.predix.solsvc.dataingestion.service.type.SensorDetails;
 import com.ge.predix.solsvc.dataingestion.service.type.SimulateSchema;
-import com.ge.predix.solsvc.dataingestion.service.type.SimulateSchemaSensors;
 import com.ge.predix.solsvc.dataingestion.websocket.WSClientEndpointConfig;
 import com.ge.predix.solsvc.dataingestion.websocket.WebSocketClient;
 import com.ge.predix.solsvc.dataingestion.websocket.WebSocketConfig;
 import com.ge.predix.solsvc.dataingestion.websocket.WebSocketServerClient;
+
+import scala.annotation.meta.getter;
 
 /**
  * 
@@ -65,6 +68,63 @@ public class TimeSeriesDataIngestionHandler extends BaseFactoryIT
 	private WebSocketServerClient wsServerClient;
 	
 	private String[] simulateSets = new String[]{"Tst8", "Tst9", "Tst10", "Tst11", "Tst12"};
+	private List<SimulateSchema> dataList = new ArrayList<SimulateSchema>();
+	private String tenantId = "";
+	private String controllerId = "";
+	private String authorization = "";
+	
+	public void setDataForSimulation(String tenantId, String controllerId, String data, String authorization)
+	{
+		tsDiHandlerlog.debug(data);
+		this.tenantId = tenantId;
+		this.controllerId = controllerId;
+		this.authorization = authorization;
+		
+    	if (StringUtils.isEmpty(this.authorization)) {
+        	tsDiHandlerlog.info("reading credentials from "+restConfig.getOauthClientId());
+        	String[] oauthClient  = restConfig.getOauthClientId().split(":");
+        	this.authorization = "Bearer "+getRestTemplate(oauthClient[0],oauthClient[1]).getAccessToken().getValue();
+        }
+        try
+        {
+        	ObjectMapper mapper = new ObjectMapper();
+        	this.dataList = mapper.readValue(data, new TypeReference<List<SimulateSchema>>()
+        	{
+        		
+        	});        	
+        }
+        catch (JsonParseException e)
+        {
+            throw new RuntimeException(e);
+        }
+        catch (JsonMappingException e)
+        {
+            throw new RuntimeException(e);
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
+        
+	}
+	
+	
+	/**
+	 *  -
+	 */
+	@Scheduled(fixedDelay=3000)
+	public void simulateData()
+	{
+
+		try
+		{
+			runSimulator(dataList.get(0).getName(), dataList.remove(0).getReadings());
+		}
+		catch (Throwable e)
+		{
+			tsDiHandlerlog.error("unable to run Machine DataSimulator Thread", e); //$NON-NLS-1$
+		}
+	}
 	
     /**
      *  -
@@ -180,62 +240,42 @@ public class TimeSeriesDataIngestionHandler extends BaseFactoryIT
                 tsDiHandlerlog.info("Posted Data to Timeseries Websocket Server");
             }                                    
         }
-        catch (JsonParseException e)
+        catch (Exception e)
         {
-            throw new RuntimeException(e);
-        }
-        catch (JsonMappingException e)
-        {
-            throw new RuntimeException(e);
-        }
-        catch (IOException e)
-        {
-            throw new RuntimeException(e);
+        	tsDiHandlerlog.error("Error : Error in run data");
         }
     }
     
     @Override
     @SuppressWarnings("nls")
-    public void simulateData(String tenentId, String controllerId, String data, String authorization)
+    public void runSimulator(String dataName, ArrayList<Double> dataReadings)
     {
-    	tsDiHandlerlog.debug(data);
-    	if (StringUtils.isEmpty(authorization)) {
-        	tsDiHandlerlog.info("reading credentials from "+restConfig.getOauthClientId());
-        	String[] oauthClient  = restConfig.getOauthClientId().split(":");
-        	authorization = "Bearer "+getRestTemplate(oauthClient[0],oauthClient[1]).getAccessToken().getValue();
-        }
+    	tsDiHandlerlog.debug(dataName);
+    	
         try
         {
-        	ObjectMapper mapper = new ObjectMapper();
-        	List<SimulateSchema> list = mapper.readValue(data, new TypeReference<List<SimulateSchema>>()
-        	{
-        		
-        	});
-        	
-        	tsDiHandlerlog.info("TimeSeries URL : " + this.tsInjectionWSConfig.getInjectionUri() );
-            tsDiHandlerlog.info("WebSocket URL : " + this.wsConfig.getPredixTsWebSocketURI());
-            tsDiHandlerlog.info("WebSocket Server URL : " + this.wsConfig.getInfyWebSocketServerURI());
-        	
+        	tsDiHandlerlog.debug("TimeSeries URL : " + this.tsInjectionWSConfig.getInjectionUri() );
+            tsDiHandlerlog.debug("WebSocket URL : " + this.wsConfig.getPredixTsWebSocketURI());
+            tsDiHandlerlog.debug("WebSocket Server URL : " + this.wsConfig.getInfyWebSocketServerURI());
+            
             InjectionMetricBuilder builder = InjectionMetricBuilder.getInstance();
 			InjectionMetric metric = new InjectionMetric(new Long(System.currentTimeMillis()));
+        	
+			for (int i=0; i < dataReadings.size(); i++)
+			{
+	            InjectionBody body = new InjectionBody(simulateSets[i]);
+				body.addDataPoint(dataReadings.get(i));
+				metric.getBody().add(body);
+			}
+			builder.addMetrics(metric);
 			
-            for (SimulateSchema sensorTags : list)
-            {
-            	
-            }
-        }
-        catch (JsonParseException e)
-        {
-            throw new RuntimeException(e);
-        }
-        catch (JsonMappingException e)
-        {
-            throw new RuntimeException(e);
-        }
-        catch (IOException e)
-        {
-            throw new RuntimeException(e);
-        }
+			wsServerClient.postToWebSocketServer(builder.build());
+			tsDiHandlerlog.info("Posted Data to Infy Websocket Server"); //$NON-NLS-1$
+		}
+        catch (Throwable e)
+		{
+        	tsDiHandlerlog.error("Unable to post data to Infy Websocket Server " + e.getMessage()); //$NON-NLS-1$
+		}
     }
 
 

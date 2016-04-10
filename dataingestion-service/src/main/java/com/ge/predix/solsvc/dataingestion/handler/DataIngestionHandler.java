@@ -69,7 +69,8 @@ public class DataIngestionHandler
     @SuppressWarnings("nls")
     public String simulateData(String tenantId, String controllerId, String data, String authorization)
     {
-        this.timeSeriesDataIngestionHandler.simulateData(tenantId, controllerId, data, authorization);
+        this.timeSeriesDataIngestionHandler.setDataForSimulation(tenantId, controllerId, data, authorization);
+        timeSeriesDataIngestionHandler.simulateData();
         return "SUCCESS";
     }
 

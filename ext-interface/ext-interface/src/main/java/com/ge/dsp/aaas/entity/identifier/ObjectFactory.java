@@ -35,19 +35,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Identifier }
-     * 
-     */
-    public Identifier createIdentifier() {
-        return new Identifier();
-    }
-
-    /**
      * Create an instance of {@link IdentifierList }
      * 
      */
     public IdentifierList createIdentifierList() {
         return new IdentifierList();
+    }
+
+    /**
+     * Create an instance of {@link Identifier }
+     * 
+     */
+    public Identifier createIdentifier() {
+        return new Identifier();
     }
 
     /**

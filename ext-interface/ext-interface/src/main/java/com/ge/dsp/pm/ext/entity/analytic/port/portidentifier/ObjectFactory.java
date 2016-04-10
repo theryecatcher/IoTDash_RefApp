@@ -35,19 +35,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PortIdentifier }
-     * 
-     */
-    public PortIdentifier createPortIdentifier() {
-        return new PortIdentifier();
-    }
-
-    /**
      * Create an instance of {@link PortIdentifierList }
      * 
      */
     public PortIdentifierList createPortIdentifierList() {
         return new PortIdentifierList();
+    }
+
+    /**
+     * Create an instance of {@link PortIdentifier }
+     * 
+     */
+    public PortIdentifier createPortIdentifier() {
+        return new PortIdentifier();
     }
 
     /**

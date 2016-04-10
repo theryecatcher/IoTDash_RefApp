@@ -35,19 +35,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FieldSelectionList }
-     * 
-     */
-    public FieldSelectionList createFieldSelectionList() {
-        return new FieldSelectionList();
-    }
-
-    /**
      * Create an instance of {@link FieldSelection }
      * 
      */
     public FieldSelection createFieldSelection() {
         return new FieldSelection();
+    }
+
+    /**
+     * Create an instance of {@link FieldSelectionList }
+     * 
+     */
+    public FieldSelectionList createFieldSelectionList() {
+        return new FieldSelectionList();
     }
 
     /**

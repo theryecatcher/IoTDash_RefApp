@@ -35,19 +35,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AppIdentifier }
-     * 
-     */
-    public AppIdentifier createAppIdentifier() {
-        return new AppIdentifier();
-    }
-
-    /**
      * Create an instance of {@link AppIdentifierList }
      * 
      */
     public AppIdentifierList createAppIdentifierList() {
         return new AppIdentifierList();
+    }
+
+    /**
+     * Create an instance of {@link AppIdentifier }
+     * 
+     */
+    public AppIdentifier createAppIdentifier() {
+        return new AppIdentifier();
     }
 
     /**

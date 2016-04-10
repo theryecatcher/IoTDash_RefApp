@@ -30,19 +30,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CreateFieldsResult }
-     * 
-     */
-    public CreateFieldsResult createCreateFieldsResult() {
-        return new CreateFieldsResult();
-    }
-
-    /**
      * Create an instance of {@link CreateFieldsRequest }
      * 
      */
     public CreateFieldsRequest createCreateFieldsRequest() {
         return new CreateFieldsRequest();
+    }
+
+    /**
+     * Create an instance of {@link CreateFieldsResult }
+     * 
+     */
+    public CreateFieldsResult createCreateFieldsResult() {
+        return new CreateFieldsResult();
     }
 
 }

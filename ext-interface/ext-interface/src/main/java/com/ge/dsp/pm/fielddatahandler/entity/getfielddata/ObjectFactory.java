@@ -30,19 +30,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetFieldDataResult }
-     * 
-     */
-    public GetFieldDataResult createGetFieldDataResult() {
-        return new GetFieldDataResult();
-    }
-
-    /**
      * Create an instance of {@link GetFieldDataRequest }
      * 
      */
     public GetFieldDataRequest createGetFieldDataRequest() {
         return new GetFieldDataRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetFieldDataResult }
+     * 
+     */
+    public GetFieldDataResult createGetFieldDataResult() {
+        return new GetFieldDataResult();
     }
 
 }

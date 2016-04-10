@@ -39,14 +39,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FieldList }
-     * 
-     */
-    public FieldList createFieldList() {
-        return new FieldList();
-    }
-
-    /**
      * Create an instance of {@link FieldType }
      * 
      */
@@ -55,11 +47,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FieldTypeList }
+     * Create an instance of {@link FieldList }
      * 
      */
-    public FieldTypeList createFieldTypeList() {
-        return new FieldTypeList();
+    public FieldList createFieldList() {
+        return new FieldList();
     }
 
     /**
@@ -68,6 +60,14 @@ public class ObjectFactory {
      */
     public Field createField() {
         return new Field();
+    }
+
+    /**
+     * Create an instance of {@link FieldTypeList }
+     * 
+     */
+    public FieldTypeList createFieldTypeList() {
+        return new FieldTypeList();
     }
 
     /**

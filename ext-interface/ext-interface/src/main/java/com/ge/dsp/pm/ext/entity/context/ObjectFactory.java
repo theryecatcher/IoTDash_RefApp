@@ -36,19 +36,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link OrchestrationContext }
-     * 
-     */
-    public OrchestrationContext createOrchestrationContext() {
-        return new OrchestrationContext();
-    }
-
-    /**
      * Create an instance of {@link OrchestrationDesignContext }
      * 
      */
     public OrchestrationDesignContext createOrchestrationDesignContext() {
         return new OrchestrationDesignContext();
+    }
+
+    /**
+     * Create an instance of {@link OrchestrationContext }
+     * 
+     */
+    public OrchestrationContext createOrchestrationContext() {
+        return new OrchestrationContext();
     }
 
     /**

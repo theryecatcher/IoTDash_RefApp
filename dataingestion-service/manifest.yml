@@ -1,6 +1,6 @@
 ---
 applications:
-  - name: infy-iot-di-service
+  - name: infy-simulate-data-service
     buildpack: java_buildpack
     path: target/dataingestion-service-1.2.0.jar
     services:

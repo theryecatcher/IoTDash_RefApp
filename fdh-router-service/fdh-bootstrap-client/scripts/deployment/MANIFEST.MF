@@ -1,17 +1,17 @@
 Manifest-Version: 1.0
-Export-Package: com.ge.predix.solsvc.fdh.handler;uses:="com.ge.dsp.pm.
- fielddatahandler.entity.getfielddata,com.ge.dsp.pm.ext.entity.model,o
- rg.apache.http,com.ge.dsp.pm.fielddatahandler.entity.putfielddata";ve
- rsion="1.5.0",com.ge.predix.solsvc.fdh.client.config;uses:="org.sprin
- gframework.context.annotation,org.slf4j,org.springframework.core.env,
- org.springframework.stereotype,org.springframework.context,org.spring
- framework.beans.factory.annotation";version="1.5.0"
+Export-Package: com.ge.predix.solsvc.fdh.client.config;uses:="org.spri
+ ngframework.context.annotation,org.slf4j,org.springframework.core.env
+ ,org.springframework.stereotype,org.springframework.context,org.sprin
+ gframework.beans.factory.annotation";version="1.5.0",com.ge.predix.so
+ lsvc.fdh.handler;uses:="com.ge.dsp.pm.fielddatahandler.entity.getfiel
+ ddata,com.ge.dsp.pm.ext.entity.model,org.apache.http,com.ge.dsp.pm.fi
+ elddatahandler.entity.putfielddata";version="1.5.0"
 Bundle-SymbolicName: com.ge.predix.solsvc.fdh-bootstrap-client
 Bundle-Version: 1.5.0
 Bundle-Name: fdh-bootstrap-client
 Bundle-ManifestVersion: 2
-Private-Package: com.ge.predix.solsvc.fdh.handler;-split-package:=merg
- e-first,com.ge.predix.solsvc.fdh.client.config;-split-package:=merge-
+Private-Package: com.ge.predix.solsvc.fdh.client.config;-split-package
+ :=merge-first,com.ge.predix.solsvc.fdh.handler;-split-package:=merge-
  first,
 Import-Package: com.ge.dsp.pm.ext.entity.model,com.ge.dsp.pm.fielddata
  handler.entity.getfielddata,com.ge.dsp.pm.fielddatahandler.entity.put
